@@ -1,0 +1,267 @@
+name: barnabus-care-assessment
+
+services:
+  pipeline:
+    build:
+      context: .
+      target: runtime
+    image: barnabus-care-assessment:local
+    init: true
+    read_only: true
+    network_mode: none
+    cpus: 8.0
+    mem_limit: 16g
+    pids_limit: 512
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      BARNABUS_DATA_ROOT: /data
+      BARNABUS_WORK_ROOT: /work
+      BARNABUS_OUTPUT_ROOT: /output
+      BARNABUS_SEED: "${BARNABUS_SEED:-20250301}"
+      BARNABUS_DUCKDB_THREADS: "${BARNABUS_DUCKDB_THREADS:-8}"
+      BARNABUS_DUCKDB_MEMORY_LIMIT: "${BARNABUS_DUCKDB_MEMORY_LIMIT:-12GB}"
+      PYTHONHASHSEED: "0"
+      SOURCE_DATE_EPOCH: "1754006400"
+      TZ: UTC
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+      HYPOTHESIS_STORAGE_DIRECTORY: /tmp/hypothesis
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+    volumes:
+      - type: bind
+        source: "${BARNABUS_DATA_ROOT:-./data}"
+        target: /data
+        read_only: true
+      - type: bind
+        source: ./work
+        target: /work
+        read_only: false
+      - type: bind
+        source: ./outputs
+        target: /output
+        read_only: false
+    tmpfs:
+      - /tmp:size=1g,mode=1777
+    command: ["run"]
+
+  test:
+    build:
+      context: .
+      target: test
+    image: barnabus-care-assessment-test:local
+    init: true
+    read_only: true
+    network_mode: none
+    environment:
+      BARNABUS_SEED: "${BARNABUS_SEED:-20250301}"
+      BARNABUS_DUCKDB_THREADS: "${BARNABUS_DUCKDB_THREADS:-8}"
+      BARNABUS_DUCKDB_MEMORY_LIMIT: "${BARNABUS_DUCKDB_MEMORY_LIMIT:-12GB}"
+      PYTHONHASHSEED: "0"
+      SOURCE_DATE_EPOCH: "1754006400"
+      TZ: UTC
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+      HYPOTHESIS_STORAGE_DIRECTORY: /tmp/hypothesis
+    tmpfs:
+      - /tmp:size=1g,mode=1777
+    command: ["-q"]
+
+  analysis:
+    build:
+      context: .
+      target: runtime
+    image: barnabus-care-assessment:local
+    init: true
+    read_only: true
+    network_mode: none
+    cpus: 8.0
+    mem_limit: 16g
+    pids_limit: 512
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      BARNABUS_SEED: "${BARNABUS_SEED:-20250301}"
+      BARNABUS_DUCKDB_THREADS: "${BARNABUS_DUCKDB_THREADS:-8}"
+      BARNABUS_DUCKDB_MEMORY_LIMIT: "${BARNABUS_DUCKDB_MEMORY_LIMIT:-12GB}"
+      PYTHONHASHSEED: "0"
+      SOURCE_DATE_EPOCH: "1754006400"
+      TZ: UTC
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+    volumes:
+      - type: bind
+        source: "${BARNABUS_DATA_ROOT:-./data}"
+        target: /data
+        read_only: true
+      - type: bind
+        source: ./work
+        target: /work
+      - type: bind
+        source: ./outputs
+        target: /output
+      - type: bind
+        source: ./results
+        target: /results
+    tmpfs:
+      - /tmp:size=1g,mode=1777
+    entrypoint: ["python", "-m", "barnabus.analysis"]
+    command:
+      - run
+      - --data-root
+      - /data
+      - --work-root
+      - /work
+      - --pipeline-output-root
+      - /output
+      - --result-root
+      - /results
+
+  scientific:
+    build:
+      context: .
+      target: runtime
+    image: barnabus-care-assessment:local
+    init: true
+    read_only: true
+    network_mode: none
+    cpus: 8.0
+    mem_limit: 16g
+    pids_limit: 512
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      BARNABUS_SEED: "${BARNABUS_SEED:-20250301}"
+      BARNABUS_DUCKDB_THREADS: "${BARNABUS_DUCKDB_THREADS:-8}"
+      BARNABUS_DUCKDB_MEMORY_LIMIT: "${BARNABUS_DUCKDB_MEMORY_LIMIT:-12GB}"
+      PYTHONHASHSEED: "0"
+      SOURCE_DATE_EPOCH: "1754006400"
+      TZ: UTC
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+    volumes:
+      - type: bind
+        source: "${BARNABUS_DATA_ROOT:-./data}"
+        target: /data
+        read_only: true
+      - type: bind
+        source: ./work
+        target: /work
+      - type: bind
+        source: ./outputs
+        target: /output
+      - type: bind
+        source: ./results
+        target: /results
+    tmpfs:
+      - /tmp:size=1g,mode=1777
+    entrypoint: ["python", "-m", "barnabus.scientific"]
+    command:
+      - run
+      - --data-root
+      - /data
+      - --work-root
+      - /work
+      - --pipeline-output-root
+      - /output
+      - --locked-result-root
+      - /results
+      - --result-root
+      - /results
+
+  evaluation-monitoring:
+    build:
+      context: .
+      target: service-runtime
+    image: barnabus-care-services:local
+    init: true
+    read_only: true
+    cpus: 2.0
+    mem_limit: 2g
+    pids_limit: 128
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      PYTHONHASHSEED: "0"
+      TZ: UTC
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+      BARNABUS_MONITORING_STATE: /state/monitoring.sqlite
+      BARNABUS_MONITORING_CONFIG: /app/config/monitoring-service-v1.yaml
+      BARNABUS_SERVICE_COMMIT_FILE: /app/config/service-implementation-commit.txt
+    volumes:
+      - monitoring-state:/state
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+    ports:
+      - "127.0.0.1:${BARNABUS_MONITORING_PORT:-8081}:8081"
+    networks: [services-internal]
+    entrypoint: ["python", "-m", "barnabus.monitoring_service"]
+    command: ["serve", "--host", "0.0.0.0", "--port", "8081"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8081/healthz', timeout=2).read()"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 5s
+
+  analytics-assistant:
+    build:
+      context: .
+      target: service-runtime
+    image: barnabus-care-services:local
+    init: true
+    read_only: true
+    cpus: 2.0
+    mem_limit: 2g
+    pids_limit: 128
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      PYTHONHASHSEED: "0"
+      TZ: UTC
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+      BARNABUS_MODEL_PROVIDER: "${BARNABUS_MODEL_PROVIDER:-deterministic}"
+      BARNABUS_ANALYTICS_SOURCE: "${BARNABUS_ANALYTICS_SOURCE:-}"
+      BARNABUS_SERVICE_COMMIT_FILE: /app/config/service-implementation-commit.txt
+    volumes:
+      - analytics-state:/state
+      - type: bind
+        source: "${BARNABUS_ANALYTICS_SOURCE_ROOT:-./analytics-source}"
+        target: /analytics-source
+        read_only: true
+    tmpfs:
+      - /tmp:size=256m,mode=1777
+    ports:
+      - "127.0.0.1:${BARNABUS_ANALYTICS_PORT:-8082}:8082"
+    networks: [services-internal]
+    entrypoint: ["python", "-m", "barnabus.analytics_service"]
+    command: ["--policy", "/app/config/analytics-policy-v1.yaml", "--state-dir", "/state/analytics", "--host", "0.0.0.0", "--port", "8082"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8082/healthz', timeout=2).read()"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 5s
+
+networks:
+  services-internal:
+    internal: true
+
+volumes:
+  monitoring-state:
+  analytics-state:
