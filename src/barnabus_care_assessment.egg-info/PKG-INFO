@@ -1,0 +1,83 @@
+Metadata-Version: 2.4
+Name: barnabus-care-assessment
+Version: 0.1.0
+Summary: Deterministic, out-of-core Barnabus Care assessment pipeline
+Requires-Python: ==3.12.*
+Description-Content-Type: text/markdown
+Requires-Dist: duckdb==1.4.1
+Requires-Dist: psutil==7.0.0
+Requires-Dist: pyarrow==20.0.0
+Requires-Dist: pydantic==2.11.7
+Requires-Dist: PyYAML==6.0.2
+Requires-Dist: tzdata==2025.2
+Provides-Extra: test
+Requires-Dist: hypothesis==6.135.26; extra == "test"
+Requires-Dist: pytest==8.4.1; extra == "test"
+
+# Barnabus Care Candidate Assessment
+
+This repository contains a staged, auditable response to the Barnabus Care candidate assessment.
+
+## Current boundary
+
+Stage 1 is documentation and safe scaffolding only. No outcome-bearing data values have been inspected, the supplied analyst SQL has not been executed, and no effect estimates or missing-claim conclusions have been produced.
+
+The supplied synthetic data remains outside this repository and read-only. Future tools must obtain its location from the `BARNABUS_DATA_ROOT` environment variable; production code must not contain a personal Desktop path.
+
+## Configuration
+
+Copy `.env.example` to a local `.env` and set `BARNABUS_DATA_ROOT` outside version control when a later stage is authorized.
+
+## Engineering reproduction
+
+The production path is a Python 3.12 package and contains no notebook step. It
+uses Docker Compose so the same command works in PowerShell, Command Prompt,
+bash, and other shells supported by Docker Desktop or Docker Engine.
+
+1. Copy `.env.example` to `.env`.
+2. Set `BARNABUS_DATA_ROOT` in `.env` to the supplied synthetic-data directory.
+3. From the repository root, run:
+
+   ```text
+   docker compose run --rm --build pipeline
+   ```
+
+The bind mount at `/data` is read-only. Incremental state and spill files use a
+writable named volume at `/work`; generated artifacts are written to the
+git-ignored local `outputs/` directory through `/output`. The container is
+limited to 8 CPUs and 16 GB RAM, while DuckDB is explicitly limited to 8
+threads and 12 GB so the process leaves memory for Arrow, Python, and the OS.
+Runtime networking and root-filesystem writes are disabled.
+
+The engineering seed is `20250301` and can be overridden through `.env` for an
+explicit sensitivity run. `PYTHONHASHSEED`, locale, timezone, source epoch, and
+common numerical-library thread counts are fixed in the image and Compose
+configuration. The separately frozen inferential seed remains governed by
+`config/analysis-plan-v1.yaml`.
+
+Run the focused test suite in the same pinned Python environment with:
+
+```text
+docker compose run --rm --build test
+```
+
+For local development with an existing Python 3.12 interpreter:
+
+```text
+python -m pip install -e ".[test]"
+pytest
+```
+
+## Stage 1 documents
+
+- `docs/requirements-traceability.md`
+- `docs/discrepancy-log.md`
+- `docs/scope-plan.md`
+- `docs/time-log.md`
+- `docs/ai-use-log.md`
+
+## Frozen pre-specification
+
+- `docs/analysis-plan.md` - human-readable pre-specified analysis plan
+- `config/analysis-plan-v1.yaml` - machine-readable frozen rules
+- `docs/decision-log.md` - append-only decisions and prespecification identity

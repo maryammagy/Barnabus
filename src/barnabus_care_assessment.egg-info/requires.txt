@@ -1,0 +1,10 @@
+duckdb==1.4.1
+psutil==7.0.0
+pyarrow==20.0.0
+pydantic==2.11.7
+PyYAML==6.0.2
+tzdata==2025.2
+
+[test]
+hypothesis==6.135.26
+pytest==8.4.1
