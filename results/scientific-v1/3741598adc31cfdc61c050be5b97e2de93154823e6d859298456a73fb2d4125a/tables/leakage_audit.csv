@@ -1,0 +1,9 @@
+check,affected_rows,total_rows,affected_fraction,result,quantity_status,affected_rows_number_id,total_rows_number_id,affected_fraction_number_id
+explicitly_after_recommendation_or_endpoint,8624,38135,0.2261439622394126,invalidates_affected_performance,observed,N-LEAKAGE-AUDIT-0001-AFFECTED_ROWS,N-LEAKAGE-AUDIT-0001-TOTAL_ROWS,N-LEAKAGE-AUDIT-0001-AFFECTED_FRACTION
+post_referral_feature_window_unknown,12510,38135,0.3280451029238233,invalidates_affected_performance,observed,N-LEAKAGE-AUDIT-0002-AFFECTED_ROWS,N-LEAKAGE-AUDIT-0002-TOTAL_ROWS,N-LEAKAGE-AUDIT-0002-AFFECTED_FRACTION
+pre_referral_time_zero_misalignment,9111,38135,0.2389143831126262,invalidates_affected_performance,observed,N-LEAKAGE-AUDIT-0003-AFFECTED_ROWS,N-LEAKAGE-AUDIT-0003-TOTAL_ROWS,N-LEAKAGE-AUDIT-0003-AFFECTED_FRACTION
+same_referral_day_order_unknown,7890,38135,0.20689655172413793,invalidates_affected_performance,observed,N-LEAKAGE-AUDIT-0004-AFFECTED_ROWS,N-LEAKAGE-AUDIT-0004-TOTAL_ROWS,N-LEAKAGE-AUDIT-0004-AFFECTED_FRACTION
+batch_live_score_changed,4561,38135,0.11960141602202701,transport_mismatch,observed,N-LEAKAGE-AUDIT-0005-AFFECTED_ROWS,N-LEAKAGE-AUDIT-0005-TOTAL_ROWS,N-LEAKAGE-AUDIT-0005-AFFECTED_FRACTION
+feature_visit_null_and_score_changed,4561,38135,0.11960141602202701,null_handling_shift,observed,N-LEAKAGE-AUDIT-0006-AFFECTED_ROWS,N-LEAKAGE-AUDIT-0006-TOTAL_ROWS,N-LEAKAGE-AUDIT-0006-AFFECTED_FRACTION
+feature_lineage_available,38135,38135,1.0,absent_invalidates_all_clinical_performance,not_supplied,N-LEAKAGE-AUDIT-0007-AFFECTED_ROWS,N-LEAKAGE-AUDIT-0007-TOTAL_ROWS,N-LEAKAGE-AUDIT-0007-AFFECTED_FRACTION
+target_and_threshold_selection_period_available,38135,38135,1.0,absent_invalidates_all_clinical_performance,not_supplied,N-LEAKAGE-AUDIT-0008-AFFECTED_ROWS,N-LEAKAGE-AUDIT-0008-TOTAL_ROWS,N-LEAKAGE-AUDIT-0008-AFFECTED_FRACTION

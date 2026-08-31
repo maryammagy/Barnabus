@@ -1,0 +1,11 @@
+gap_id,gap,impact,status
+G-01,No authorized third-clinician adjudication exists.,No single ground-truth label or judge accuracy claim.,open
+G-02,No different-family judge scores or family identifier are supplied.,Same-family dependence cannot be quantified or contrasted.,open
+G-03,"Recommendation target definition, feature lineage, and threshold-selection history are absent.",All apparent model performance is invalid for clinical use.,open
+G-04,The available cancellation outcome is not authorized as day-of-surgery cancellation.,"Calibration, decision curves, uplift, monitoring, and power use a sensitivity proxy only.",open
+G-05,"Uplift treatment timing, assignment mechanism, propensity contract, and effect-scale definition are absent.","Causal Qini, AUUC, calibration, and policy value are not estimable.",open
+G-06,Interference components are inferred from clinician/ward history rather than certified operationally.,"Independent-unit count, allocation, power, and MDE are provisional.",open
+G-07,Only eight provisional independent components are available.,Desired small clinical effects can be infeasible despite many patient rows.,open
+G-08,The supplied alert rule/version is absent and only about one seasonal cycle is available.,Historic alerts are unreproduced and false-alert calibration is unproved.,open
+G-09,The stop/restart authority matrix is candidate-designed and not organizationally accepted.,Governance cannot be considered operational until signed.,open
+G-10,The sealed workload and container image were not executed locally.,Scale and environment gates remain open.,open

@@ -1,0 +1,11 @@
+monitor_id,metric,value,reference,status,quantity_status,value_number_id,reference_number_id
+DQ-01,pipeline_contracts_passed,24,24,pass,observed,N-MONITOR-SNAPSHOT-0001-VALUE,N-MONITOR-SNAPSHOT-0001-REFERENCE
+DQ-03,late_revision_rows,3613,,visible_requires_baseline,observed,N-MONITOR-SNAPSHOT-0002-VALUE,
+DQ-04,quarantine_rows,165,0,contained_not_silent,observed,N-MONITOR-SNAPSHOT-0003-VALUE,N-MONITOR-SNAPSHOT-0003-REFERENCE
+POP-01,maximum_service_share_shift_pre_post,0.10534601022470377,0.0,descriptive_no_validated_threshold,observed,N-MONITOR-SNAPSHOT-0004-VALUE,N-MONITOR-SNAPSHOT-0004-REFERENCE
+POP-02,maximum_sex_share_shift_pre_post,0.0030828254153155155,0.0,descriptive_no_validated_threshold,observed,N-MONITOR-SNAPSHOT-0005-VALUE,N-MONITOR-SNAPSHOT-0005-REFERENCE
+MOD-01,score_live_PSI_pre_post,0.002643418244649541,0.2,screening_threshold_not_release_gate,observed,N-MONITOR-SNAPSHOT-0006-VALUE,N-MONITOR-SNAPSHOT-0006-REFERENCE
+MOD-02,feature_null_rate_shift_post_minus_pre,-4.95290574872298e-05,0.0,descriptive_transport_diagnostic,observed,N-MONITOR-SNAPSHOT-0007-VALUE,N-MONITOR-SNAPSHOT-0007-REFERENCE
+CAL-01,proxy_Brier_shift_post_minus_pre,-0.0051137408437614,0.0,invalidated_outcome_and_leakage_not_clinical_calibration,invalidated_sensitivity_only,N-MONITOR-SNAPSHOT-0008-VALUE,N-MONITOR-SNAPSHOT-0008-REFERENCE
+OUT-01,proxy_cancellation_shift_post_minus_pre,-0.008769832700270166,0.0,descriptive_not_causal_or_day_of_surgery,sensitivity_only,N-MONITOR-SNAPSHOT-0009-VALUE,N-MONITOR-SNAPSHOT-0009-REFERENCE
+OUT-01,reproducible_budgeted_alerts,0,29,supplied_rule_unreproduced,recomputed_monitor_replay,N-MONITOR-SNAPSHOT-0010-VALUE,N-MONITOR-SNAPSHOT-0010-REFERENCE

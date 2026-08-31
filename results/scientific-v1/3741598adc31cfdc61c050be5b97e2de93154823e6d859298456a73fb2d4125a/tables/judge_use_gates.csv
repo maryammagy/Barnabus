@@ -1,0 +1,7 @@
+gate,passed,evidence,quantity_status,evidence_number_id
+unadjusted_sensitivity_lower_at_least_0.90,False,0.8767123287671232,decision_rule_input,N-JUDGE-USE-GATES-0001-EVIDENCE
+unadjusted_specificity_lower_at_least_0.90,False,0.043478260869565216,decision_rule_input,N-JUDGE-USE-GATES-0002-EVIDENCE
+authorized_adjudicated_ground_truth_available,False,0,observed,N-JUDGE-USE-GATES-0003-EVIDENCE
+independent_different_family_validation_available,False,0,not_supplied,N-JUDGE-USE-GATES-0004-EVIDENCE
+zero_authorization_violations_verified,False,,not_estimable_authorization_model_not_opened,
+multiplicity_adjusted_accuracy_bounds_available,False,,not_estimable_no_formal_accuracy_tests,

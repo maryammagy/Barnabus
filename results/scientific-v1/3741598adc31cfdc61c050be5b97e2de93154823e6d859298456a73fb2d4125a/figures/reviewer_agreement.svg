@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="310" viewBox="0 0 900 310">
+<metadata>service-cluster bootstrap intervals; no adjudicated ground truth</metadata>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="28" y="32" font-family="Arial" font-size="20" font-weight="bold" fill="#172033">Reviewer agreement</text>
+<text x="28" y="55" font-family="Arial" font-size="12" fill="#8b1e3f">Supplied reviewer labels; candidate did not adjudicate disagreements.</text>
+<line x1="545.0" y1="75" x2="545.0" y2="260" stroke="#7d8597" stroke-dasharray="5 5"/>
+<line x1="240" y1="270" x2="850" y2="270" stroke="#61708a"/>
+<text x="230" y="292" font-family="Arial" font-size="10">-1</text>
+<text x="845" y="292" font-family="Arial" font-size="10">1</text>
+<text x="28" y="110" font-family="Arial" font-size="13">raw_agreement</text>
+<line x1="783.8196394617523" y1="105" x2="823.7068965517241" y2="105" stroke="#16697a" stroke-width="5"/>
+<circle cx="804.25" cy="105" r="7" fill="#16697a"/>
+<text x="28" y="172" font-family="Arial" font-size="13">cohen_kappa</text>
+<line x1="706.9199166374791" y1="167" x2="793.3539836565029" y2="167" stroke="#16697a" stroke-width="5"/>
+<circle cx="751.7596182523113" cy="167" r="7" fill="#16697a"/>
+<text x="28" y="234" font-family="Arial" font-size="13">gwet_ac1</text>
+<line x1="724.3610399811662" y1="229" x2="802.5304072398189" y2="229" stroke="#16697a" stroke-width="5"/>
+<circle cx="764.5746887966806" cy="229" r="7" fill="#16697a"/>
+</svg>

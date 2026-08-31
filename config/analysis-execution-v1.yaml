@@ -1,0 +1,71 @@
+schema_version: 1
+result_version: v1
+frozen_plan: config/analysis-plan-v1.yaml
+frozen_tag: prespec-v1
+
+study:
+  start: "2025-08-01"
+  end: "2026-07-31"
+  switch: "2026-05-01"
+  placebo_switch: "2026-02-01"
+  followup_days: 90
+
+exposure:
+  authoritative_selected_service_list_available: false
+  primary_status: not_identified
+  sensitivity_proxy: all_site_a_services
+  sensitivity_proxy_label: assumed_sensitivity_only_not_claim_aligned
+  reason: supplied_package_withholds_selected_services_and_has_no_activation_contract
+
+endpoints:
+  cancellation_primary_status: not_identified
+  cancellation_sensitivity_proxy: closed_without_completed_surgery_within_followup
+  cancellation_snapshot_proxy: supplied_general_cancelled_flag_capture_time_unknown
+  readiness_proxy: event_time_referral_to_readiness_with_cancellation_terminal_not_ready
+  agreement_universe: recommendation_and_action_events_within_7_days
+  agreement_labels: labels_pairs.csv
+
+inference:
+  seed: 23082026
+  wild_bootstrap_draws: 9999
+  service_cluster_resamples: 9999
+  synthetic_ridge: 0.000001
+  synthetic_iterations: 5000
+  nominal_component_minimum: 6
+  minimum_components_each_arm: 2
+
+missingness:
+  odds_or_hazard_multipliers: [0.5, 0.75, 1.5, 2.0]
+  site_b_observation_odds: [0.25, 0.5, 1.0]
+  directional_bounds: [treated_worse_control_better, treated_better_control_worse]
+
+quantitative_bias:
+  risk_ratio_grid: [1.25, 1.5, 2.0, 3.0]
+  partial_r2_grid: [0.01, 0.05, 0.10, 0.20]
+  selection_odds_grid: [1.25, 1.5, 2.0, 3.0]
+
+multiplicity:
+  alpha: 0.05
+  F_headline: holm
+  F_legacy51: holm
+  F_diagnostic: holm
+  F_subgroup: benjamini_yekutieli
+  F_evaluation: benjamini_yekutieli
+
+analyst_reproduction:
+  expected_query_sha256: 65749b48150e40d96b943d810e35b75b24532ffe2ce2e23300cf907961f328b7
+  execute_untrusted_source_file: false
+  execution_rule: validate_hash_then_execute_reviewed_literal_query
+
+reporting:
+  number_registry_required: true
+  quantity_labels:
+    - observed
+    - reproduced
+    - unreproduced
+    - assumed
+    - imputed
+    - simulated
+    - extrapolated
+    - sensitivity_only
+  decimal_places: 6

@@ -1,0 +1,16 @@
+{
+  "event_id": "load-event-{request_index}",
+  "case_id": "load-case-{request_index}",
+  "revision": 1,
+  "scored_at": "2026-07-06T00:00:00+00:00",
+  "arrived_at": "2026-07-06T00:00:00+00:00",
+  "site": "A",
+  "service_code": "A-CARD",
+  "score": 0.25,
+  "threshold": 0.5,
+  "data_version": "load-data-v1",
+  "model_version": "load-model-v1",
+  "prompt_version": "load-prompt-v1",
+  "policy_version": "load-policy-v1",
+  "commit_sha": "1111111111111111111111111111111111111111"
+}
