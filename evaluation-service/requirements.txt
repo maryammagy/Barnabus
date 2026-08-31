@@ -1,0 +1,11 @@
+# Evaluation and Monitoring Service
+flask==3.0.0
+gunicorn==21.2.0
+pandas==2.1.4
+numpy==1.26.2
+scipy==1.11.4
+pyyaml==6.0.1
+python-json-logger==2.0.7
+pytest==7.4.3
+pytest-cov==4.1.0
+locust==2.20.0

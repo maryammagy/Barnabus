@@ -1,0 +1,5 @@
+metric,value,source
+cancellation_reduction_pct,41,analyst_query.sql
+readiness_time_reduction_days,3.9,analyst_query.sql
+clinician_agreement_pct,87,labels_pairs.csv
+clinician_satisfaction_pct,94,unknown

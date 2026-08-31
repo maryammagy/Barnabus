@@ -1,0 +1,47 @@
+{
+  "roles": {
+    "analyst_site_a": {
+      "sites": [
+        "A"
+      ],
+      "denied_columns": [
+        "clinical_note",
+        "patient_name",
+        "dob"
+      ]
+    },
+    "analyst_site_b": {
+      "sites": [
+        "B"
+      ],
+      "denied_columns": [
+        "clinical_note",
+        "patient_name",
+        "dob"
+      ]
+    },
+    "clinical_lead": {
+      "sites": [
+        "A",
+        "B"
+      ],
+      "denied_columns": [
+        "patient_name",
+        "dob"
+      ]
+    },
+    "commercial": {
+      "sites": [],
+      "denied_columns": [
+        "clinical_note",
+        "patient_name",
+        "dob",
+        "risk_score",
+        "cost_cad"
+      ]
+    }
+  },
+  "row_limit": 5000,
+  "statement_timeout_ms": 15000,
+  "max_scan_rows": 50000000
+}
