@@ -1,0 +1,3 @@
+family_relation,pairs,available,independent_validation,interpretation,quantity_status,pairs_number_id
+same_family_stated_in_frozen_plan,120,True,False,shared_family_errors_can_be_correlated,supplied_design_fact,N-JUDGE-FAMILY-DEPENDENCE-0001-PAIRS
+different_model_family,0,False,,not_estimable_no_different_family_judge_scores,not_estimable,N-JUDGE-FAMILY-DEPENDENCE-0002-PAIRS

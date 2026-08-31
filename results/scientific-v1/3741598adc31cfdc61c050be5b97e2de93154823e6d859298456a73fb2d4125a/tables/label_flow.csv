@@ -1,0 +1,6 @@
+flow,rows,quantity_status,rows_number_id
+supplied_pairs,500,observed,N-LABEL-FLOW-0001-ROWS
+supplied_judge_scores,500,observed,N-LABEL-FLOW-0002-ROWS
+double_reviewed_pairs,120,observed,N-LABEL-FLOW-0003-ROWS
+reviewed_pairs_unmatched_to_episode,0,observed,N-LABEL-FLOW-0004-ROWS
+candidate_created_adjudications,0,none_created,N-LABEL-FLOW-0005-ROWS

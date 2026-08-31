@@ -1,0 +1,2 @@
+[console_scripts]
+barnabus-pipeline = barnabus.pipeline:main

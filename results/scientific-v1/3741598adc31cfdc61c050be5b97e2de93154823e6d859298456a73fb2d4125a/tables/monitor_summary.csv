@@ -1,0 +1,9 @@
+metric,value,quantity_status,value_number_id
+supplied_alerts,29,observed,N-MONITOR-SUMMARY-0001-VALUE
+reproducible_budgeted_alerts,0,recomputed_monitor_replay,N-MONITOR-SUMMARY-0002-VALUE
+supplied_alert_disagreements,29,recomputed_monitor_replay,N-MONITOR-SUMMARY-0003-VALUE
+small_segments_suppressed,112,recomputed_monitor_replay,N-MONITOR-SUMMARY-0004-VALUE
+persistent_alerts_budget_suppressed,0,recomputed_monitor_replay,N-MONITOR-SUMMARY-0005-VALUE
+rate_reconciliation_failures,0,recomputed_monitor_replay,N-MONITOR-SUMMARY-0006-VALUE
+weekly_human_statistical_alert_budget,3,prospective_monitor_specification,N-MONITOR-SUMMARY-0007-VALUE
+weekly_human_triage_hours,2.25,assumed_operating_capacity,N-MONITOR-SUMMARY-0008-VALUE

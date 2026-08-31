@@ -1,0 +1,116 @@
+{
+  "gaps": [
+    {
+      "gap": "No authorized third-clinician adjudication exists.",
+      "gap_id": "G-01",
+      "impact": "No single ground-truth label or judge accuracy claim.",
+      "status": "open"
+    },
+    {
+      "gap": "No different-family judge scores or family identifier are supplied.",
+      "gap_id": "G-02",
+      "impact": "Same-family dependence cannot be quantified or contrasted.",
+      "status": "open"
+    },
+    {
+      "gap": "Recommendation target definition, feature lineage, and threshold-selection history are absent.",
+      "gap_id": "G-03",
+      "impact": "All apparent model performance is invalid for clinical use.",
+      "status": "open"
+    },
+    {
+      "gap": "The available cancellation outcome is not authorized as day-of-surgery cancellation.",
+      "gap_id": "G-04",
+      "impact": "Calibration, decision curves, uplift, monitoring, and power use a sensitivity proxy only.",
+      "status": "open"
+    },
+    {
+      "gap": "Uplift treatment timing, assignment mechanism, propensity contract, and effect-scale definition are absent.",
+      "gap_id": "G-05",
+      "impact": "Causal Qini, AUUC, calibration, and policy value are not estimable.",
+      "status": "open"
+    },
+    {
+      "gap": "Interference components are inferred from clinician/ward history rather than certified operationally.",
+      "gap_id": "G-06",
+      "impact": "Independent-unit count, allocation, power, and MDE are provisional.",
+      "status": "open"
+    },
+    {
+      "gap": "Only eight provisional independent components are available.",
+      "gap_id": "G-07",
+      "impact": "Desired small clinical effects can be infeasible despite many patient rows.",
+      "status": "open"
+    },
+    {
+      "gap": "The supplied alert rule/version is absent and only about one seasonal cycle is available.",
+      "gap_id": "G-08",
+      "impact": "Historic alerts are unreproduced and false-alert calibration is unproved.",
+      "status": "open"
+    },
+    {
+      "gap": "The stop/restart authority matrix is candidate-designed and not organizationally accepted.",
+      "gap_id": "G-09",
+      "impact": "Governance cannot be considered operational until signed.",
+      "status": "open"
+    },
+    {
+      "gap": "The sealed workload and container image were not executed locally.",
+      "gap_id": "G-10",
+      "impact": "Scale and environment gates remain open.",
+      "status": "open"
+    }
+  ],
+  "implementation_commit": "b832b8c98f0838d1c0c3a7d47e2fc9d9e5f49a32",
+  "judge_use": [
+    {
+      "candidate_created_decision": true,
+      "decision": "not_fit",
+      "quantity_status": "decision_rule_output",
+      "reason": "fails_frozen_accuracy_independence_and_adjudication_gates",
+      "use_case": "autonomous_clinical_scoring"
+    },
+    {
+      "candidate_created_decision": true,
+      "decision": "not_fit_on_supplied_evidence",
+      "quantity_status": "decision_rule_output",
+      "reason": "poor_discrimination_and_specificity_no_independent_ground_truth",
+      "use_case": "clinical_triage_support"
+    },
+    {
+      "candidate_created_decision": true,
+      "decision": "narrowly_defensible_with_human_review",
+      "quantity_status": "decision_rule_output",
+      "reason": "non_patient_facing_sampling_only_no_label_override",
+      "use_case": "offline_research_error_sampling"
+    }
+  ],
+  "locked_result_commit": "87a183979b6b019d916c05bd4775120b4269d6cf",
+  "locked_result_id": "228f930b076eb4c5495ac2b84066ba658b91a1c62a1302fc32a4f1bc96f8cdea",
+  "recommendation_model_validity": "invalidated_for_clinical_use_sensitivity_only",
+  "result_id": "3741598adc31cfdc61c050be5b97e2de93154823e6d859298456a73fb2d4125a",
+  "schema_version": 1,
+  "study_feasibility": [
+    {
+      "conclusion": "infeasible_with_eight_components_under_planning_scenario",
+      "decision": "desired_two_point_claim_feasible_with_current_units",
+      "desired_risk_difference": -0.02,
+      "desired_risk_difference_number_id": "N-STUDY-FEASIBILITY-0001-DESIRED_RISK_DIFFERENCE",
+      "independent_components": 8,
+      "independent_components_number_id": "N-STUDY-FEASIBILITY-0001-INDEPENDENT_COMPONENTS",
+      "planning_icc": 0.03,
+      "planning_icc_number_id": "N-STUDY-FEASIBILITY-0001-PLANNING_ICC",
+      "quantity_status": "provisional_simulated_decision_support",
+      "simulated_power": 0.511,
+      "simulated_power_lower": 0.48909215158945685,
+      "simulated_power_lower_number_id": "N-STUDY-FEASIBILITY-0001-SIMULATED_POWER_LOWER",
+      "simulated_power_number_id": "N-STUDY-FEASIBILITY-0001-SIMULATED_POWER",
+      "simulated_power_upper": 0.5328656733703556,
+      "simulated_power_upper_number_id": "N-STUDY-FEASIBILITY-0001-SIMULATED_POWER_UPPER",
+      "target_power": 0.8,
+      "target_power_number_id": "N-STUDY-FEASIBILITY-0001-TARGET_POWER",
+      "value": false
+    }
+  ],
+  "uplift_causal_identification": false
+}

@@ -1,0 +1,9 @@
+parameter,value,unit,quantity_status,value_number_id
+study_weeks,48,weeks,assumed_design_parameter,N-DESIGN-PARAMETERS-0001-VALUE
+wash_in_weeks,2,weeks,assumed_design_parameter,N-DESIGN-PARAMETERS-0002-VALUE
+primary_endpoint_maturation_days,90,days,assumed_design_parameter,N-DESIGN-PARAMETERS-0003-VALUE
+target_power,0.8,proportion,assumed_design_parameter,N-DESIGN-PARAMETERS-0004-VALUE
+futility_conditional_power,0.1,proportion,assumed_design_parameter,N-DESIGN-PARAMETERS-0005-VALUE
+harm_risk_difference,0.02,risk_difference,assumed_design_parameter,N-DESIGN-PARAMETERS-0006-VALUE
+statistical_alert_budget_per_week,3,incident_bundles,assumed_operating_capacity,N-DESIGN-PARAMETERS-0007-VALUE
+human_weekly_statistical_alert_hours,2.25,hours,assumed_operating_capacity,N-DESIGN-PARAMETERS-0008-VALUE

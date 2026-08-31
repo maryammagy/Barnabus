@@ -1,0 +1,52 @@
+[build-system]
+requires = [
+  "setuptools==80.9.0",
+  "wheel==0.45.1",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "barnabus-care-assessment"
+version = "0.1.0"
+description = "Deterministic, out-of-core Barnabus Care assessment pipeline"
+readme = "README.md"
+requires-python = "==3.12.*"
+dependencies = [
+  "duckdb==1.4.1",
+  "psutil==7.0.0",
+  "pyarrow==20.0.0",
+  "pydantic==2.11.7",
+  "PyYAML==6.0.2",
+  "tzdata==2025.2",
+]
+
+[project.optional-dependencies]
+test = [
+  "hypothesis==6.135.26",
+  "pytest==8.4.1",
+]
+
+[project.scripts]
+barnabus-pipeline = "barnabus.pipeline:main"
+barnabus-analysis = "barnabus.analysis:main"
+barnabus-scientific = "barnabus.scientific:main"
+barnabus-monitoring = "barnabus.monitoring_service:main"
+barnabus-analytics = "barnabus.analytics_service:main"
+barnabus-service-loadtest = "barnabus.service_loadtest:main"
+barnabus-service-evaluation = "barnabus.service_evaluation:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = [
+  "--strict-config",
+  "--strict-markers",
+  "--hypothesis-seed=20250301",
+  "-p",
+  "no:cacheprovider",
+]
+testpaths = ["tests"]

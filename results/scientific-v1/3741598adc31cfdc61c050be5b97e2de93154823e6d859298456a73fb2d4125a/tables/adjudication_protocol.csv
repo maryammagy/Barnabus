@@ -1,0 +1,6 @@
+step,procedure,actor,blinding,output,step_number_id
+1,"Pre-register label definitions, source documents, abstention criteria, and conflict rules with clinical governance approval.",clinical_governance_lead,before_any_judge_score_or_candidate_classification,versioned_label_manual,N-ADJUDICATION-PROTOCOL-0001-STEP
+2,"Have two qualified clinicians label independently from the same immutable case packet, blinded to each other and to all model outputs.",reviewer_1_and_reviewer_2,mutual_and_model_blinded,two_signed_labels_plus_abstain_reason,N-ADJUDICATION-PROTOCOL-0002-STEP
+3,Send disagreements and prespecified quality-control agreements to an independent third clinician who was not involved in model development.,authorized_third_clinician,blind_to_reviewer_identity_model_judge_and_candidate,adjudicator_label_and_rationale_code,N-ADJUDICATION-PROTOCOL-0003-STEP
+4,Permit an explicit UNRESOLVED outcome; never force a binary label when source evidence is insufficient.,third_clinician,maintained,PROCEED_HOLD_or_UNRESOLVED,N-ADJUDICATION-PROTOCOL-0004-STEP
+5,"Lock the packet hash, label-manual version, reviewer credentials, timestamps, and adjudication audit trail before evaluating the judge.",data_steward,unblind_only_after_label_lock,adjudicated_label_version,N-ADJUDICATION-PROTOCOL-0005-STEP

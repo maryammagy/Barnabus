@@ -1,0 +1,111 @@
+schema_version: 1
+result_version: scientific-v1
+locked_results:
+  commit: 87a183979b6b019d916c05bd4775120b4269d6cf
+  analysis_id: 228f930b076eb4c5495ac2b84066ba658b91a1c62a1302fc32a4f1bc96f8cdea
+  prespec_tag: prespec-v1
+  prespec_commit: 30aaac16303e65db49b15df116f150258460e31c
+
+inference:
+  seed: 31082026
+  cluster_bootstrap_draws: 9999
+  interval_alpha: 0.05
+
+labels:
+  positive_label: PROCEED
+  judge_probability_mapping: verdict_confidence_to_proceed_probability
+  judge_operating_threshold: 0.50
+  autonomous_minimum_sensitivity_lower: 0.90
+  autonomous_minimum_specificity_lower: 0.90
+  family_relation: same_family_stated_in_frozen_plan
+  adjudication_status: not_supplied
+
+recommendation_model:
+  outcome: event_log_closed_without_completed_surgery_proxy
+  outcome_authority: not_authorized_as_day_of_surgery_cancellation
+  actual_threshold_source: threshold_used
+  decision_curve_thresholds: [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.62, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90]
+  reliability_bins: 10
+  temporal_validity_rule: score_date_must_equal_referral_date_and_feature_lineage_must_precede_referral
+  feature_lineage_available: false
+  target_definition_available: false
+  performance_disposition: invalidated_for_clinical_use_sensitivity_only
+
+uplift:
+  outcome: event_log_closed_without_completed_surgery_proxy
+  fractions: [0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00]
+  calibration_bins: 10
+  causal_identification: false
+  invalidation_reasons:
+    - treatment_timing_and_assignment_mechanism_absent
+    - no_randomization_or_defensible_propensity_contract
+    - outcome_is_unauthorized_proxy
+    - uplift_score_scale_not_defined_as_conditional_effect
+  supplied_auc_role: invalid_metric_for_uplift
+
+prospective_study:
+  design: constrained_randomized_staggered_rollout_by_interference_component
+  independent_units_expected: 8
+  independent_unit_status: provisional_inferred_from_clinician_and_ward_graph_requires_operational_validation
+  sequences: 4
+  components_per_sequence: 2
+  site_stratified: true
+  weeks: 48
+  rollout_weeks_zero_based: [16, 24, 32, 40]
+  wash_in_weeks: 2
+  primary_endpoint_maturation_days: 90
+  alpha_two_sided: 0.05
+  fixed_t_reference_df7: 2.364624
+  target_power: 0.80
+  simulations: 2000
+  effect_grid_risk_difference: [0.00, -0.01, -0.02, -0.03, -0.04, -0.05, -0.06, -0.08, -0.10]
+  icc_grid: [0.01, 0.03, 0.05]
+  primary_clinical_difference: -0.02
+  seasonality_amplitude: 0.02
+  serial_correlation: 0.50
+  serial_shock_sd: 0.01
+  scheduling_policy_week_zero_based: 24
+  scheduling_policy_common_risk_difference: 0.01
+  site_time_differential_over_study: 0.01
+  interim_information_fractions: [0.50, 0.75, 1.00]
+  futility_conditional_power: 0.10
+  harm_risk_difference: 0.02
+  harm_one_sided_alpha: 0.01
+
+monitoring:
+  minimum_segment_cases: 20
+  minimum_baseline_weeks: 8
+  shrinkage_prior_cases: 50
+  statistical_alert_budget_per_week: 3
+  persistence_windows: 2
+  by_fdr: 0.05
+  human_triage_minutes_per_statistical_alert: 45
+  human_weekly_statistical_alert_hours: 2.25
+  hard_stops_not_budgeted: true
+  data_maturation_days: 9
+  minimum_independent_components: 5
+  escalation_sla:
+    level_1: next_business_day
+    level_2: four_hours
+    level_3: immediate_pause
+  restart_requires:
+    - clinical_safety_owner_approval
+    - data_owner_approval
+    - system_owner_approval
+    - root_cause_and_corrective_action
+    - version_increment
+    - deterministic_replay_and_hash_verification
+    - shadow_validation
+  source_domains:
+    - data_contracts
+    - population_shift
+    - model_behavior
+    - calibration
+    - clinician_action
+    - clinical_outcomes
+
+sources:
+  cluster_trial_reporting: https://www.bmj.com/content/345/bmj.e5661
+  decision_curve_method: https://journals.sagepub.com/doi/10.1177/0272989X06295361
+  adaptive_design_guidance: https://www.fda.gov/regulatory-information/search-fda-guidance-documents/adaptive-design-clinical-trials-drugs-and-biologics-guidance-industry
+  data_safety_monitoring: https://www.niddk.nih.gov/research-funding/human-subjects-research/policies-clinical-researchers/data-safety-monitoring-plans

@@ -1,0 +1,9 @@
+component_id,site,services,service_count,component_source,independence_status,quantity_status,service_count_number_id
+IC-01,A,A-CARD;A-GEN;A-OPHT;A-PAED;A-PLAS;A-URO,6,candidate_inferred_pre_switch_clinician_plus_ward_graph,provisional_requires_operational_validation,derived_design_input,N-INTERFERENCE-COMPONENTS-0001-SERVICE_COUNT
+IC-02,A,A-ENT;A-NEURO;A-ORTH,3,candidate_inferred_pre_switch_clinician_plus_ward_graph,provisional_requires_operational_validation,derived_design_input,N-INTERFERENCE-COMPONENTS-0002-SERVICE_COUNT
+IC-03,A,A-GYN;A-THOR,2,candidate_inferred_pre_switch_clinician_plus_ward_graph,provisional_requires_operational_validation,derived_design_input,N-INTERFERENCE-COMPONENTS-0003-SERVICE_COUNT
+IC-04,A,A-VASC,1,candidate_inferred_pre_switch_clinician_plus_ward_graph,provisional_requires_operational_validation,derived_design_input,N-INTERFERENCE-COMPONENTS-0004-SERVICE_COUNT
+IC-05,B,B-CARD;B-OPHT;B-PAED,3,candidate_inferred_pre_switch_clinician_plus_ward_graph,provisional_requires_operational_validation,derived_design_input,N-INTERFERENCE-COMPONENTS-0005-SERVICE_COUNT
+IC-06,B,B-ENT;B-GYN;B-NEURO;B-URO;B-VASC,5,candidate_inferred_pre_switch_clinician_plus_ward_graph,provisional_requires_operational_validation,derived_design_input,N-INTERFERENCE-COMPONENTS-0006-SERVICE_COUNT
+IC-07,B,B-GEN,1,candidate_inferred_pre_switch_clinician_plus_ward_graph,provisional_requires_operational_validation,derived_design_input,N-INTERFERENCE-COMPONENTS-0007-SERVICE_COUNT
+IC-08,B,B-ORTH;B-PLAS;B-THOR,3,candidate_inferred_pre_switch_clinician_plus_ward_graph,provisional_requires_operational_validation,derived_design_input,N-INTERFERENCE-COMPONENTS-0008-SERVICE_COUNT

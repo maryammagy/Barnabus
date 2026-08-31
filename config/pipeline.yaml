@@ -1,0 +1,67 @@
+version: 1
+
+study_window:
+  start: "2025-08-01"
+  end: "2026-07-31"
+
+event_time:
+  convention: utc_naive
+  sources:
+    hisA:
+      supplied_offset_required: true
+      allowed_offsets_hours: [-6.0, -5.0]
+      inferred_named_zone_for_audit: America/Chicago
+    hisB:
+      supplied_offset_required: true
+      allowed_offsets_hours: [0.0]
+      inferred_named_zone_for_audit: UTC
+    device:
+      supplied_offset_required: false
+      allowed_offsets_hours: []
+      missing_offset_assumption_hours: 0.0
+      inferred_named_zone_for_audit: UTC
+
+schema:
+  workflow_event_order:
+    - referral_created
+    - documents_received
+    - assessment_generated
+    - recommendation_issued
+    - clinician_review_opened
+    - clinician_action_recorded
+    - readiness_marked
+    - surgery_scheduled
+    - surgery_completed
+    - case_closed
+  operational_event_types:
+    - audit_write
+    - cache_refresh
+    - heartbeat
+    - index_query
+    - policy_evaluated
+  service_code_pattern: "[AB]-(CARD|ENT|GEN|GYN|NEURO|OPHT|ORTH|PAED|PLAS|THOR|URO|VASC)"
+  case_id_pattern: "C[0-9]{9}"
+  event_id_pattern: "[0-9a-f]{16}"
+  clinician_id_pattern: "MD[0-9]{4}"
+  ward_id_pattern: "[AB]-W[1-4]"
+
+contracts:
+  allowed_sites: [A, B]
+  cost_cad_min: 0.0
+  cost_cad_max: 100000.0
+  max_ingest_lag_days: 10
+  contained_rejection_reasons:
+    - event_nonexistent_local_time
+    - ingest_nonexistent_local_time
+  expected_raw_min_rows: 1
+
+grains:
+  normalized_events: event_id
+  canonical_events: semantic_event_key
+  case_workflow: case_id
+  service_day: [event_date_local, site, service_code]
+  snapshot_case_summary: case_id
+  reconciliation: case_id
+  late_arrival_revisions: [event_date_local, revision_date_local, source_partition]
+  partition_characterization: source_partition
+  quarantine: event_id

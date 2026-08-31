@@ -1,0 +1,341 @@
+schema_version: 1
+plan_version: prespec-v1
+prepared_at: "2026-08-30T18:51:32+03:30"
+timezone: Asia/Tehran
+frozen_by: git_tag:prespec-v1
+outcome_access_before_freeze: false
+
+input_boundary:
+  data_root_env: BARNABUS_DATA_ROOT
+  allowed_before_freeze:
+    - assignment_pdf
+    - three_claim_statements
+    - study_dates
+    - filenames_and_sizes
+    - csv_headers
+    - parquet_schema_and_footer_metadata
+    - non_outcome_documentation
+  prohibited_before_freeze:
+    - csv_data_rows
+    - parquet_row_groups_or_statistics
+    - sql_execution_or_contents
+    - json_contents
+    - clinical_note_text
+    - analyst_results
+    - outcome_values_or_effects
+
+study:
+  event_time_start: "2025-08-01"
+  event_time_end: "2026-07-31"
+  site_a_switch: "2026-05-01"
+  site_b_mode: silent
+  incident_unit: surgical_episode
+  treatment_unit: site_x_canonical_service_code
+  canonical_service_fields: [service_code, svc_code]
+  inference_cluster: baseline_clinician_coverage_connected_component_of_site_x_service
+  primary_weighting: equal_service
+  secondary_weighting: case_volume
+  primary_followup_days: 90
+  later_ingest_rule: accept_only_if_event_time_belongs_to_study_or_pre_cutoff_followup
+  treatment_assignment: intention_to_treat_at_referral
+  spillover_mapping: proportion_of_baseline_clinician_covered_services_or_ward_switched
+  pure_control: own_exposure_zero_and_spillover_zero
+
+claims:
+  c1_cancellation:
+    statement: system_reduces_day_of_surgery_cancellations
+    target_population: selected_site_a_service_postswitch_referrals_including_preassessment_cancellations
+    identification_population: target_plus_same_service_preperiod_and_concurrent_silent_controls
+    treatment: selected_site_a_service_active_at_referral_on_or_after_switch
+    comparison: same_service_preperiod_plus_concurrent_pure_control_services
+    outcome: day_of_surgery_cancellation_binary
+    time_zero: referral
+    followup: procedure_or_cancellation_or_90_days_capped_at_study_end
+    primary_contrast: equal_service_ATT_risk_difference_treated_minus_silent
+    favorable_direction: negative
+    sesoi: 0.02
+    null_region: [-0.02, 0.02]
+    approach_a: overlap_weighted_doubly_robust_difference_in_differences_event_study
+    approach_a_assumption: conditional_parallel_trends_and_measured_exchangeability
+    approach_b: augmented_generalized_synthetic_control_service_week_risk
+    approach_b_assumption: stable_latent_factor_counterfactual_and_adequate_donor_fit
+    secondary_contrast: risk_ratio
+
+  c2_readiness:
+    statement: system_reduces_time_from_referral_to_readiness
+    target_population: selected_site_a_service_postswitch_referrals_without_conditioning_on_readiness
+    identification_population: target_plus_same_service_preperiod_and_concurrent_silent_controls
+    treatment: selected_site_a_service_active_at_referral_on_or_after_switch
+    comparison: same_service_preperiod_plus_concurrent_pure_control_services
+    outcome: restricted_mean_days_not_ready_with_cancellation_terminal_not_ready
+    time_zero: referral
+    followup: 90_days_capped_at_study_end
+    primary_contrast: equal_service_ATT_difference_in_90_day_restricted_mean_days_not_ready
+    favorable_direction: negative
+    sesoi_days: 3
+    null_region_days: [-3, 3]
+    approach_a: competing_risk_marginal_structural_model_with_treatment_and_censoring_weights
+    approach_a_assumption: paired_weight_or_outcome_model_correct_and_measured_exchangeability
+    approach_b: augmented_synthetic_control_service_week_restricted_mean_pseudooutcomes
+    approach_b_assumption: stable_preperiod_trajectory_and_factor_structure
+    secondary_contrast: cumulative_incidence_of_readiness_by_day_90
+
+  c3_agreement:
+    statement: clinicians_agree_with_recommendations_in_a_large_majority
+    population: all_eligible_displayed_recommendation_action_pairs_in_active_site_a_services
+    treatment_or_exposure: recommendation_displayed_at_timestamped_version
+    comparison: chance_agreement_from_fixed_marginals
+    secondary_comparison: silent_non_displayed_pairs_for_persuasion_only
+    outcome: agreement_with_first_eligible_clinician_action
+    time_zero: recommendation_timestamp
+    followup: first_irreversible_action_or_7_days
+    primary_contrasts: [raw_agreement_probability, observed_minus_chance_agreement]
+    large_majority_threshold: 0.80
+    sesoi_chance_excess: 0.05
+    null_region_chance_excess: [-0.05, 0.05]
+    chance_corrected_primary: gwet_ac1
+    chance_corrected_secondary: cohen_kappa
+    approach_a: two_phase_inverse_probability_estimator
+    approach_a_assumption: conditional_MAR_for_action_review_and_label_observation
+    approach_b: pattern_mixture_bounds_and_tipping_point
+    approach_b_assumption: bounded_selection_shift_without_MAR
+
+adjustment:
+  confounders_and_precision:
+    - site
+    - canonical_service_code
+    - referral_week
+    - preswitch_service_level_and_trend
+    - baseline_patient_age
+    - sex
+    - baseline_ward_id
+    - baseline_clinician_coverage
+    - externally_documented_scheduling_policy_indicator
+    - c3_prereveal_recommendation_category_and_model_version
+  required_missing_action:
+    scheduling_policy_indicator: classify_causal_claims_unsupported_with_these_data
+  mediators_do_not_adjust_primary:
+    - post_switch_assessment
+    - recommendation
+    - clinician_review_or_action
+    - downstream_workflow_state
+    - targeted
+    - post_referral_score_or_version_change
+  colliders_do_not_condition:
+    - reached_readiness
+    - reviewed_in_detail
+    - outcome_observed
+    - survival_to_assessment
+    - post_outcome_feature
+    - adjudication_availability_if_disagreement_related
+  instruments: []
+  linkage_or_measurement_only:
+    - identifiers
+    - source_system
+    - ingest_ts
+    - tz_offset_hours
+    - event_and_model_versions
+  prohibited_model_inputs: [patient_name, clinician_name, clinical_note_text]
+
+immortal_time_rule:
+  eligibility_time: referral
+  assign_treatment_once_at: referral
+  never_require: [assessment, recommendation, review, readiness, surgery]
+  referral_before_switch_assessment_after_switch: retain_as_silent_primary
+  missing_referral_time: exclude_primary_count_and_bound_never_replace_with_assessment_time
+
+inference:
+  treatment_unit: site_x_canonical_service_code
+  independent_unit: baseline_clinician_coverage_connected_component
+  crossed_grouping_c3: clinician_or_ward
+  covariance: CR2_cluster_robust
+  degrees_of_freedom: satterthwaite
+  corroboration:
+    wild_cluster_bootstrap_t:
+      draws: 9999
+      weights: Webb
+      seed: 23082026
+    leave_one_component_out: true
+    synthetic_control_in_space_placebos: true
+  required_reporting:
+    - total_services_and_components
+    - treated_services_and_components
+    - control_services_and_components
+    - cluster_leverage
+    - intracluster_correlation
+    - effective_sample_size
+    - satterthwaite_df
+  nominal_ci_allowed_if:
+    minimum_total_components: 6
+    minimum_components_each_arm: 2
+    minimum_adjusted_df: 4
+  failure_cap: supportable_only_in_weaker_form
+
+missingness:
+  primary: MAR_given_baseline_site_service_case_mix_calendar_source_and_pretimezero_history
+  administrative_censoring: IPCW_through_2026_07_31
+  readiness_cancellation: competing_terminal_not_ready_state
+  mnar_pattern_multipliers: [0.5, 0.75, 1.5, 2.0]
+  site_b_poor_vs_favorable_observation_odds: [0.25, 0.5, 1.0]
+  directional_tipping_point: treated_worse_control_better_then_reverse
+
+quantitative_bias:
+  c1:
+    methods: [e_value, joint_risk_ratio_bias_factor]
+    rr_grid: [1.25, 1.5, 2.0, 3.0]
+  c2:
+    method: partial_r2_robustness_value_translated_to_days
+    partial_r2_grid: [0.01, 0.05, 0.10, 0.20]
+  c3:
+    method: unmeasured_selection_odds_grid
+    odds_grid: [1.25, 1.5, 2.0, 3.0]
+  targets: [null, sesoi]
+
+controls:
+  negative_control_outcome_primary: patient_age_at_referral
+  negative_control_outcome_secondary: sex_distribution
+  placebo_switch: "2026-02-01"
+  placebo_claims: [c1_cancellation, c2_readiness]
+  blocking_rule: similar_direction_and_magnitude_or_holm_adjusted_diagnostic_rejection
+
+multiplicity:
+  registry: append_before_execution_and_retain_all_results
+  families:
+    F_headline:
+      members: [c1_primary, c2_primary, c3_primary]
+      method: Holm
+      error_rate: FWER
+      alpha: 0.05
+    F_legacy51:
+      members: all_51_analyst_comparisons_without_filtering
+      expected_count: 51
+      method: Holm
+      error_rate: FWER
+      alpha: 0.05
+    F_diagnostic:
+      members: [c1_placebo, c2_placebo, age_negative_control, sex_negative_control]
+      method: Holm
+      error_rate: FWER
+      alpha: 0.05
+    F_subgroup:
+      members: every_registered_claim_x_method_x_subgroup_interaction
+      method: Benjamini_Yekutieli
+      error_rate: FDR
+      alpha: 0.05
+    F_evaluation:
+      members: every_registered_judge_model_uplift_group_or_threshold_comparison
+      method: Benjamini_Yekutieli
+      error_rate: FDR
+      alpha: 0.05
+  sensitivity_rule: estimates_and_intervals_only_no_new_null_tests
+  added_test_rule: expand_family_before_execution
+
+decision_rules:
+  absent:
+    require_both_methods: true
+    require_all_primary_missingness_analyses: true
+    interval_wholly_inside_claim_null_region: true
+    exactly_one: name_it
+    zero_or_multiple: report_unresolved_never_force
+  classification_precedence:
+    - unsupported_by_observational_design
+    - unsupported_with_these_data
+    - supportable_only_in_weaker_form
+    - supportable_as_written
+  supportable_as_written_requires:
+    - both_methods_same_favorable_direction
+    - multiplicity_adjusted_bound_exceeds_favorable_sesoi
+    - clean_negative_controls_and_placebos
+    - moderate_MNAR_and_QBA_do_not_cross_boundary
+    - no_identification_measurement_or_small_cluster_gate_failure
+  c3_additional_requirements:
+    raw_agreement_adjusted_lower_bound_above: 0.80
+    chance_excess_adjusted_lower_bound_above: 0.05
+    gwet_ac1_adjusted_lower_bound_above: 0.0
+  prohibitions:
+    - non_rejection_is_not_absence
+    - subgroup_unadjusted_legacy_or_single_method_cannot_upgrade_headline
+
+evaluation:
+  labels:
+    unit: pair_id
+    blind_to_llm_judge_before_ground_truth: true
+    metrics: [raw_reviewer_agreement, gwet_ac1, cohen_kappa, reviewer_specific_estimates]
+    primary_ground_truth: blinded_third_clinician_adjudication
+    if_no_authorized_adjudicator: reviewer_specific_and_consensus_bounds_no_single_accuracy_claim
+  llm_judge:
+    metrics: [sensitivity, specificity, balanced_accuracy, precision_recall, brier, calibration_intercept, calibration_slope, weighted_agreement]
+    independent_validation: false_due_to_shared_model_family
+    autonomous_use_threshold:
+      adjusted_lower_sensitivity: 0.90
+      adjusted_lower_specificity: 0.90
+      authorization_violations: 0
+    fallback_use: calibrated_triage_support_only
+  recommendation_model:
+    primary_score: score_live
+    operating_threshold: threshold_used
+    batch_score_role: transport_and_drift_only
+    metrics: [sensitivity, specificity, ppv, npv, brier, log_loss, calibration_intercept, calibration_slope, decision_curve, net_benefit]
+  uplift:
+    prohibited_metric_as_validation: model_auc_reported
+    methods: [cross_fitted_qini, auuc, uplift_calibration, doubly_robust_policy_value]
+    split: forward_time_with_service_clusters_intact
+  leakage:
+    feature_time_must_precede_prediction: true
+    post_recommendation_or_effective_outcome_feature_invalidates_affected_metrics: true
+    checks: [feature_lineage, batch_vs_live_null_handling, temporal_overlap, threshold_selection_overlap]
+  subgroups:
+    dimensions: [site, canonical_service, sex, age_lt_40, age_40_64, age_ge_65]
+    report_interactions_not_separate_claims: true
+    minimum_service_clusters: 5
+    minimum_episodes: 20
+
+sensitivities:
+  followup_days: [30, 60, 90]
+  source_authority: [event_log_primary, operational_snapshot_sensitivity]
+  service_code_reconciliation: alternate_safe_mapping
+  timezone_convention: source_specific_documented_offset
+  contamination_and_spillover: [pure_control, partial_exposure, referral_before_switch_assessment_after]
+  policy_timing_shift_weeks: [-4, -2, 2, 4]
+  weight_trim_percentiles: [[1, 99], [5, 95]]
+  alternate_cluster: ward
+  leave_one_service_out: true
+  both_estimators: true
+  mnar_and_qba_grids: true
+
+exclusions:
+  allowed:
+    - event_time_outside_study_except_pre_cutoff_followup_repairs
+    - no_valid_referral_time_after_deterministic_reconciliation
+    - no_valid_service_after_non_outcome_reconciliation
+    - contract_failing_impossible_timestamp_pending_logged_resolution
+    - exact_or_semantic_duplicate_after_auditable_deduplication
+  never_exclude_for:
+    - outcome_value
+    - assessment_status
+    - readiness_status
+    - review_status
+    - inconvenient_effect_direction
+  rebooking_rule: separate_only_with_deterministic_new_referral_or_booking_sequence_else_single_episode_and_log
+
+monitoring:
+  replay_lookback_days: 9
+  domains: [schema_and_contracts, population_and_case_mix, score_and_calibration, clinician_action, clinical_outcomes]
+  method: hierarchical_service_week_EWMA_or_CUSUM_with_seasonality
+  statistical_alert_budget_per_week: 3
+  statistical_breach_persistence_windows: 2
+  weekly_multiple_testing: Benjamini_Yekutieli
+  immediate_stop_not_budgeted:
+    - data_contract_failure
+    - authorization_violation
+    - provenance_failure
+    - harm_boundary
+  alert_provenance: [data_version, model_version, prompt_version, policy_version, code_commit]
+  late_revision_rule: retain_original_alert_and_append_retraction_or_revision_reason
+
+deviations:
+  original_plan_and_tag_immutable: true
+  log: docs/decision-log.md
+  required_fields: [timestamp, author, before, after, reason, outcomes_known, affected_analyses, disposition]
+  pre_outcome_change: new_version_and_new_tag
+  post_outcome_change: exploratory_only_cannot_upgrade_claim

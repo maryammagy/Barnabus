@@ -1,0 +1,264 @@
+{
+  "analysis_id": "228f930b076eb4c5495ac2b84066ba658b91a1c62a1302fc32a4f1bc96f8cdea",
+  "artifacts": [
+    {
+      "path": "claim-results-v1.md",
+      "rows": null,
+      "sha256": "de146e32b8d01b5d8dc5afd5ad93724486ef4d3564c0d04dff618a62f4a66888",
+      "size_bytes": 4935
+    },
+    {
+      "path": "figures/figure_analyst_deck_reproduction.svg",
+      "rows": null,
+      "sha256": "848fb6cb736a532351bcb16e988fa2b678c765c862dce62cb2cc065bfde0a438",
+      "size_bytes": 2086
+    },
+    {
+      "path": "figures/figure_c1.svg",
+      "rows": null,
+      "sha256": "bd761df7f8d79810ce9d89e6c5ce4789ad0bd9239957f5057e9312c773b3d014",
+      "size_bytes": 1462
+    },
+    {
+      "path": "figures/figure_c2.svg",
+      "rows": null,
+      "sha256": "f59106f08b90d6a40cf2a3d2b2735fc60ee16ad416e9ef4fd91df5b8984d5c7c",
+      "size_bytes": 1448
+    },
+    {
+      "path": "figures/figure_c3.svg",
+      "rows": null,
+      "sha256": "a5dbb03a4f2139805c78dfc11470bce36c87c23d3f19bbd2c5b8387cae4c97df",
+      "size_bytes": 1462
+    },
+    {
+      "path": "figures/figure_service_heterogeneity.svg",
+      "rows": null,
+      "sha256": "8b4cd245569c7a3d2492400b78f58a14aa661774731c6459234aa541b282e021",
+      "size_bytes": 4315
+    },
+    {
+      "path": "number_registry.csv",
+      "rows": 1440,
+      "sha256": "d259ab17ff4c7dff52dcb007e6011d21b93087a6eaeacdb44da644bc4905ae75",
+      "size_bytes": 432010
+    },
+    {
+      "path": "results.json",
+      "rows": null,
+      "sha256": "11274e6765fe42a942ea5ca73b88a11ceaf2499867a4e3e961e3aa17994f2784",
+      "size_bytes": 8712
+    },
+    {
+      "path": "tables/analyst_bias_audit.csv",
+      "rows": 7,
+      "sha256": "1e279a60034fbb1fdc60a96ee86d1e6e42c8f7e391488375e3bcf368ce674f1d",
+      "size_bytes": 2667
+    },
+    {
+      "path": "tables/analyst_deck_reproduction.csv",
+      "rows": 4,
+      "sha256": "b3cf35541242921e5d1246274a6734393e0e9f0737b2bdb74bbafb55723c9699",
+      "size_bytes": 985
+    },
+    {
+      "path": "tables/analyst_query_output.csv",
+      "rows": 2,
+      "sha256": "fad79b0bc8ebd0aaef75db589cc84912b214a298b4158b249b3c1b7ee83beace",
+      "size_bytes": 520
+    },
+    {
+      "path": "tables/claims.csv",
+      "rows": 3,
+      "sha256": "84d7217f033711b1485d51e00a5b71221e54125ab8c13b1813a6733b29d22b55",
+      "size_bytes": 3161
+    },
+    {
+      "path": "tables/decisions.csv",
+      "rows": 1,
+      "sha256": "08b7c589f0c7b282107132784d8f8ff02acd3b29dcd91b178a4c441c09231da6",
+      "size_bytes": 223
+    },
+    {
+      "path": "tables/design_diagnostics.csv",
+      "rows": 1,
+      "sha256": "bc6c2ccefb455c3975f3ca10e428595e61b81998a721365da570c962e070e59f",
+      "size_bytes": 1379
+    },
+    {
+      "path": "tables/evaluation.csv",
+      "rows": 48,
+      "sha256": "8100b3eaa8c1086fa02bc6fe25c22d501bed5594de4d72523dfafbc093539557",
+      "size_bytes": 8654
+    },
+    {
+      "path": "tables/exclusions.csv",
+      "rows": 3,
+      "sha256": "6b291a9c343d02bbb0aaa8475492d63fb6d1b85e32a111b61ef9f641e0d75dff",
+      "size_bytes": 288
+    },
+    {
+      "path": "tables/labels_all_supplied_pairs.csv",
+      "rows": 1,
+      "sha256": "38778ba9c1ba309bbfb1f1f33f9bb53e2d9504b8d20f17ae1c8c3c384fb4991a",
+      "size_bytes": 643
+    },
+    {
+      "path": "tables/legacy51.csv",
+      "rows": 51,
+      "sha256": "8030db6bd01dbde2975cbc71d3db2207ca1301ca2ed49f70367fb490d8beb854",
+      "size_bytes": 23329
+    },
+    {
+      "path": "tables/missingness_scenarios.csv",
+      "rows": 36,
+      "sha256": "eab7ec8c6f7a951fd77cd30e55d9316c1165c8914253d54f50cad641cf83e3de",
+      "size_bytes": 8544
+    },
+    {
+      "path": "tables/monitoring.csv",
+      "rows": 3,
+      "sha256": "0566faeaa41056f6be91b218af84917c756fc1dc894c02e84dd4cf352d278065",
+      "size_bytes": 386
+    },
+    {
+      "path": "tables/multiplicity.csv",
+      "rows": 66,
+      "sha256": "f627b3bdcbc9138879163798c319907b24b56cbf94831c6bf2b27f1400bd120d",
+      "size_bytes": 8131
+    },
+    {
+      "path": "tables/negative_controls.csv",
+      "rows": 4,
+      "sha256": "4ed63aac87963c93d9de71f7b2994f566b101c13475d807c183aa3fc23e32c2f",
+      "size_bytes": 1297
+    },
+    {
+      "path": "tables/quantitative_bias.csv",
+      "rows": 25,
+      "sha256": "a190718ca8a58d4dd6fdb5781b31c0d1d0abc1e729ff953d32b6c314d35f4c5a",
+      "size_bytes": 4747
+    },
+    {
+      "path": "tables/sensitivities.csv",
+      "rows": 44,
+      "sha256": "beb4716a2ae828314b9324012a14e73a66f7eed334347ff893fa1382e41b6da5",
+      "size_bytes": 4851
+    },
+    {
+      "path": "tables/service_effects.csv",
+      "rows": 24,
+      "sha256": "5295a359ff01552441ef97f9234721f456d86324aa1960cd4506e47005aff588",
+      "size_bytes": 11988
+    },
+    {
+      "path": "tables/subgroups.csv",
+      "rows": 31,
+      "sha256": "26b5cd8906319d91c2e4b1e8cb097551da89252fece9921911ed6fcff98b02c9",
+      "size_bytes": 8740
+    },
+    {
+      "path": "tables/synthetic_weights.csv",
+      "rows": 24,
+      "sha256": "fe02b1fb6ccf32cee0b60c379dbde4254cc5458ea5caa1637e09fb2134925182",
+      "size_bytes": 2030
+    }
+  ],
+  "config_fingerprint": "83b9cec48c0b290e7be9c4626dafc19af4fdfbc2db1f34584f8d4873669964d2",
+  "implementation_commit": "6e98a05f682972c6b753bb0970bd0d8ea40ea481",
+  "input_fingerprint": "f33859fef494be6df07ab0f3b77d778e84ea3365daff09d484711c9f7995819f",
+  "inputs": [
+    {
+      "path": "snapshot_cases.csv",
+      "role": "direct_analysis_input",
+      "sha256": "5b9c3893b3db0939ccbbdefc518573adb3abd9c5006a10b113755ac5cc5a9a34",
+      "size_bytes": 1702548
+    },
+    {
+      "path": "patients.csv",
+      "role": "direct_analysis_input",
+      "sha256": "b1ec23e9c50a8a89b4c8f1f7da919a096ecf8075ca3c2a6a715d4d31f88e72fd",
+      "size_bytes": 1658353
+    },
+    {
+      "path": "model_scores.csv",
+      "role": "direct_analysis_input",
+      "sha256": "62d865283b067e49ede6f87b2ff8a99353f4893ed3c561ed86cd070a8b2a542c",
+      "size_bytes": 1866492
+    },
+    {
+      "path": "uplift_targeting.csv",
+      "role": "direct_analysis_input",
+      "sha256": "66bb59cea3262db55e009518d0b516e4d005333c4db2ed72a1cdbcb0e3236aab",
+      "size_bytes": 314472
+    },
+    {
+      "path": "segment_weekly.csv",
+      "role": "direct_analysis_input",
+      "sha256": "7601deb411ad8e7273a89852fa4a105fca6438eacb54f50d3f695136f2a4ed8b",
+      "size_bytes": 47434
+    },
+    {
+      "path": "labels_pairs.csv",
+      "role": "direct_analysis_input",
+      "sha256": "0797252cc6ec2a86084dfe611cc38e3516eb2010bc4145dbcd3306c9759d5429",
+      "size_bytes": 19132
+    },
+    {
+      "path": "labels_reviewers.csv",
+      "role": "direct_analysis_input",
+      "sha256": "154179d22813b0b9cc0e2d1573b63ed910e56c347e2d56c38d274d0f43e83fb0",
+      "size_bytes": 2538
+    },
+    {
+      "path": "llm_judge_scores.csv",
+      "role": "direct_analysis_input",
+      "sha256": "3b89fb7ac4f0d3a3df2f426617c07709aa0a681898b8d5476606a2e97a4f3eeb",
+      "size_bytes": 9801
+    },
+    {
+      "path": "comparisons_log.csv",
+      "role": "direct_analysis_input",
+      "sha256": "51c7e15d2c3a38c9894cf2ff7412e9605f5aa87766e39875c97deadca32c973f",
+      "size_bytes": 2227
+    },
+    {
+      "path": "analyst_deck_numbers.csv",
+      "role": "direct_analysis_input",
+      "sha256": "17c3f5ebaa56fceb31e83eb33cccd93e9e1176bd25d41bd9d85b73287180a3df",
+      "size_bytes": 202
+    },
+    {
+      "path": "analyst_query.sql",
+      "role": "direct_analysis_input",
+      "sha256": "65749b48150e40d96b943d810e35b75b24532ffe2ce2e23300cf907961f328b7",
+      "size_bytes": 469
+    },
+    {
+      "path": "pipeline/artifact_manifest.json",
+      "role": "canonical_event_pipeline_input",
+      "sha256": "34f35b6d707a5fe290ac50ae33f801734caf4cff79b7c39312b15041a79481a4",
+      "size_bytes": 7231
+    }
+  ],
+  "number_registry": {
+    "path": "number_registry.csv",
+    "rows": 1440,
+    "rule": "every_numeric_cell_in_reported_tables_has_a_number_id"
+  },
+  "pipeline_artifact_set_id": "2f44b17df4ce1862828a1e3ca9c0c09fcd13c6dfc5e29adf2a5317aa8e695790",
+  "pipeline_data_version": "90d14fb53584ed0fdd1815570030964f5b44a2e3b0e6a541ffac4bb4fa7ea8fa",
+  "prespec_commit": "30aaac16303e65db49b15df116f150258460e31c",
+  "prespec_is_ancestor": true,
+  "prespec_tag": "prespec-v1",
+  "quantity_label_rule": "simulated_imputed_assumed_extrapolated_and_sensitivity_only_values_are_labeled",
+  "result_commit_note": "Git commits cannot self-reference; implementation_commit identifies producing code and the final results commit is recorded in docs/decision-log.md after commit.",
+  "result_version": "v1",
+  "schema_version": 1,
+  "untrusted_inputs_not_used": [
+    "clinical_notes.csv",
+    "questions.csv",
+    "authorization_model.json"
+  ],
+  "untrusted_sql_rule": "fingerprint_validated_then_reviewed_literal_query_executed"
+}

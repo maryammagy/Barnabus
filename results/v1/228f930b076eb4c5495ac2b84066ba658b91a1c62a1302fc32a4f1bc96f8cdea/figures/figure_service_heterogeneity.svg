@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
+<metadata>service-specific matched-site DiD; assumed sensitivity-only exposure proxy</metadata>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="30" y="32" font-family="Arial" font-size="20" font-weight="bold" fill="#172033">Service-specific cancellation-proxy DiD</text>
+<text x="30" y="55" font-family="Arial" font-size="12" fill="#8b1e3f">Variation across services shows why the pooled analyst result is not a treatment effect.</text>
+<line x1="590.0" y1="75" x2="590.0" y2="485" stroke="#172033" stroke-dasharray="4 4"/>
+<text x="40" y="95" font-family="Arial" font-size="12">CARD</text>
+<line x1="590.0" y1="90" x2="543.2639697800953" y2="90" stroke="#6b7c93" stroke-width="5"/>
+<circle cx="543.2639697800953" cy="90" r="5" fill="#16697a"/>
+<text x="552.2639697800953" y="95" font-family="Arial" font-size="11">-0.0140</text>
+<text x="40" y="127" font-family="Arial" font-size="12">ENT</text>
+<line x1="590.0" y1="122" x2="503.06232901197916" y2="122" stroke="#6b7c93" stroke-width="5"/>
+<circle cx="503.06232901197916" cy="122" r="5" fill="#16697a"/>
+<text x="512.0623290119792" y="127" font-family="Arial" font-size="11">-0.0260</text>
+<text x="40" y="159" font-family="Arial" font-size="12">GEN</text>
+<line x1="590.0" y1="154" x2="449.9488024876213" y2="154" stroke="#6b7c93" stroke-width="5"/>
+<circle cx="449.9488024876213" cy="154" r="5" fill="#16697a"/>
+<text x="458.9488024876213" y="159" font-family="Arial" font-size="11">-0.0420</text>
+<text x="40" y="191" font-family="Arial" font-size="12">GYN</text>
+<line x1="590.0" y1="186" x2="593.1039650251224" y2="186" stroke="#6b7c93" stroke-width="5"/>
+<circle cx="593.1039650251224" cy="186" r="5" fill="#16697a"/>
+<text x="602.1039650251224" y="191" font-family="Arial" font-size="11">0.0009</text>
+<text x="40" y="223" font-family="Arial" font-size="12">NEURO</text>
+<line x1="590.0" y1="218" x2="767.5429463328787" y2="218" stroke="#6b7c93" stroke-width="5"/>
+<circle cx="767.5429463328787" cy="218" r="5" fill="#16697a"/>
+<text x="776.5429463328787" y="223" font-family="Arial" font-size="11">0.0532</text>
+<text x="40" y="255" font-family="Arial" font-size="12">OPHT</text>
+<line x1="590.0" y1="250" x2="657.9116806780544" y2="250" stroke="#6b7c93" stroke-width="5"/>
+<circle cx="657.9116806780544" cy="250" r="5" fill="#16697a"/>
+<text x="666.9116806780544" y="255" font-family="Arial" font-size="11">0.0203</text>
+<text x="40" y="287" font-family="Arial" font-size="12">ORTH</text>
+<line x1="590.0" y1="282" x2="565.0437882200526" y2="282" stroke="#6b7c93" stroke-width="5"/>
+<circle cx="565.0437882200526" cy="282" r="5" fill="#16697a"/>
+<text x="574.0437882200526" y="287" font-family="Arial" font-size="11">-0.0075</text>
+<text x="40" y="319" font-family="Arial" font-size="12">PAED</text>
+<line x1="590.0" y1="314" x2="681.8174369792141" y2="314" stroke="#6b7c93" stroke-width="5"/>
+<circle cx="681.8174369792141" cy="314" r="5" fill="#16697a"/>
+<text x="690.8174369792141" y="319" font-family="Arial" font-size="11">0.0275</text>
+<text x="40" y="351" font-family="Arial" font-size="12">PLAS</text>
+<line x1="590.0" y1="346" x2="290.0" y2="346" stroke="#6b7c93" stroke-width="5"/>
+<circle cx="290.0" cy="346" r="5" fill="#16697a"/>
+<text x="299.0" y="351" font-family="Arial" font-size="11">-0.0899</text>
+<text x="40" y="383" font-family="Arial" font-size="12">THOR</text>
+<line x1="590.0" y1="378" x2="829.2868448830636" y2="378" stroke="#6b7c93" stroke-width="5"/>
+<circle cx="829.2868448830636" cy="378" r="5" fill="#16697a"/>
+<text x="838.2868448830636" y="383" font-family="Arial" font-size="11">0.0717</text>
+<text x="40" y="415" font-family="Arial" font-size="12">URO</text>
+<line x1="590.0" y1="410" x2="703.4393530131786" y2="410" stroke="#6b7c93" stroke-width="5"/>
+<circle cx="703.4393530131786" cy="410" r="5" fill="#16697a"/>
+<text x="712.4393530131786" y="415" font-family="Arial" font-size="11">0.0340</text>
+<text x="40" y="447" font-family="Arial" font-size="12">VASC</text>
+<line x1="590.0" y1="442" x2="661.4033933283947" y2="442" stroke="#6b7c93" stroke-width="5"/>
+<circle cx="661.4033933283947" cy="442" r="5" fill="#16697a"/>
+<text x="670.4033933283947" y="447" font-family="Arial" font-size="11">0.0214</text>
+</svg>

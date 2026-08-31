@@ -1,0 +1,99 @@
+schema_version: 1
+service: evaluation-monitoring
+
+ingestion:
+  maximum_request_bytes: 65536
+  maturation_days: 9
+  require_timezone_aware_timestamps: true
+  require_explicit_correction_link: true
+  allowed_numeric_features: []
+  outcome_maturation_days: 90
+
+metrics:
+  period: iso_week_utc
+  minimum_segment_cases: 20
+  minimum_baseline_weeks: 26
+  baseline_weeks: 26
+  psi_bins: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+  monitors:
+    score_psi:
+      catalog_id: MOD-01
+      domain: drift
+      threshold: 0.20
+      minimum_cases: 20
+      alerting: false
+      mode: diagnostic_only_no_approved_seasonal_baseline
+    brier_score:
+      catalog_id: CAL-01
+      domain: calibration
+      threshold: 0.25
+      minimum_cases: 200
+      alerting: false
+      mode: diagnostic_only_unauthorized_target
+    calibration_gap:
+      catalog_id: CAL-01
+      domain: calibration
+      threshold: 0.10
+      minimum_cases: 200
+      alerting: false
+      mode: diagnostic_only_unauthorized_target
+    mature_outcome_rate:
+      catalog_id: OUT-01
+      domain: clinical_outcomes
+      threshold: 1.0
+      minimum_cases: 20
+      alerting: false
+      mode: diagnostic_only_unauthorized_outcome
+    mature_outcome_rate_delta:
+      catalog_id: OUT-01
+      domain: clinical_outcomes
+      threshold: 0.05
+      minimum_cases: 20
+      alerting: false
+      mode: diagnostic_only_unauthorized_outcome
+
+monitor_catalog_coverage:
+  DQ-01: not_computable_by_scored_case_endpoint_pipeline_contract_monitor_required
+  DQ-02: contained_by_immutable_event_id_and_revision_conflict
+  DQ-03: implemented_lateness_and_backfill_visibility
+  DQ-04: not_computable_by_scored_case_endpoint_source_time_monitor_required
+  POP-01: not_computable_required_case_mix_fields_not_ingested
+  POP-02: not_computable_required_demographic_fields_not_ingested
+  MOD-01: diagnostic_score_psi_no_approved_seasonal_baseline
+  MOD-02: not_computable_batch_shadow_contract_not_ingested
+  CAL-01: diagnostic_brier_and_gap_target_not_authorized
+  ACT-01: not_computable_action_events_not_ingested
+  LAB-01: not_computable_label_batches_not_ingested
+  LLM-01: not_computable_judge_family_labels_not_ingested
+  OUT-01: diagnostic_mature_client_claimed_outcome_not_authorized
+  OUT-02: not_computable_readiness_and_censoring_not_ingested
+  UPL-01: not_computable_treatment_assignment_not_ingested
+  PROV-01: implemented_service_commit_gate_and_exact_input_version_tuple
+  AUTH-01: not_computable_here_owned_by_analytics_authorization_service
+  SCALE-01: not_computable_without_sealed_qualification
+
+provenance:
+  input_version_status: client_claimed_not_registry_verified
+  registry_enforcement: false
+
+locked_statistical_policy_coverage:
+  status: executable_subset_not_full_locked_catalog
+  benjamini_yekutieli: not_implemented_no_valid_null_p_values_from_this_endpoint
+  hierarchical_shrinkage: not_implemented
+  seasonal_baseline: not_implemented_rolling_history_is_diagnostic_only
+  independent_component_gate: not_computable_component_mapping_not_ingested
+  hard_stop_alert_ledger: not_implemented_validation_fails_closed_and_logs_only
+  implication: no_metric_from_this_default_config_is_clinically_actionable
+
+alerts:
+  statistical_budget_per_period: 3
+  persistence_periods: 2
+  hard_stops_are_outside_budget: true
+  corrected_history_retraction_reason: corrected_history_or_budget_reallocation
+  incident_deduplication: site_service_period_root_cause_bundle
+
+latency:
+  ingest_p99_budget_ms: 250
+  health_p99_budget_ms: 100
+  reference_load_requests: 500
+  reference_load_concurrency: 8
