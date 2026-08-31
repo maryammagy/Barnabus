@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="280" viewBox="0 0 900 280">
+<metadata>claim=c2; quantity_status=sensitivity_only; implementation=6e98a05f682972c6b753bb0970bd0d8ea40ea481</metadata>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="30" y="32" font-family="Arial" font-size="20" font-weight="bold" fill="#172033">Claim 2: days not ready</text>
+<text x="30" y="56" font-family="Arial" font-size="12" fill="#8b1e3f">Assumed all-Site A sensitivity proxy; not the unidentified frozen primary estimand</text>
+<line x1="170" y1="225" x2="850" y2="225" stroke="#61708a"/>
+<line x1="412.7240829599425" y1="80" x2="412.7240829599425" y2="232" stroke="#172033" stroke-dasharray="4 4"/>
+<text x="170" y="250" font-family="Arial" font-size="11">-5.964</text>
+<text x="800" y="250" font-family="Arial" font-size="11">10.744</text>
+<text x="475.0" y="270" font-family="Arial" font-size="11">days</text>
+<text x="30" y="125" font-family="Arial" font-size="14" fill="#172033">Approach A</text>
+<line x1="427.9942131201144" y1="120" x2="771.5384615384615" y2="120" stroke="#16697a" stroke-width="5"/>
+<circle cx="600.9239350028266" cy="120" r="7" fill="#16697a"/>
+<text x="30" y="185" font-family="Arial" font-size="14" fill="#172033">Approach B</text>
+<line x1="248.46153846153845" y1="180" x2="595.4981921993806" y2="180" stroke="#c56a1a" stroke-width="5"/>
+<circle cx="534.4388933822589" cy="180" r="7" fill="#c56a1a"/>
+</svg>

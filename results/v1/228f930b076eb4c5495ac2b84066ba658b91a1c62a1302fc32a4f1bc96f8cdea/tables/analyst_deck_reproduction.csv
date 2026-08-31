@@ -1,0 +1,5 @@
+metric,supplied_value,reproduced_value,supplied_source,reproduction_status,quantity_status,supplied_value_quantity_status,reproduced_value_quantity_status,supplied_value_number_id,reproduced_value_number_id
+cancellation_reduction_pct,41.0,12.262616694352289,analyst_query.sql,unreproduced,unreproduced,unreproduced,reproduced,N-ANALYST-DECK-REPRODUCTION-0001-SUPPLIED_VALUE,N-ANALYST-DECK-REPRODUCTION-0001-REPRODUCED_VALUE
+readiness_time_reduction_days,3.9,0.6572044909858725,analyst_query.sql,unreproduced,unreproduced,unreproduced,reproduced,N-ANALYST-DECK-REPRODUCTION-0002-SUPPLIED_VALUE,N-ANALYST-DECK-REPRODUCTION-0002-REPRODUCED_VALUE
+clinician_agreement_pct,87.0,90.2,labels_pairs.csv,unreproduced,unreproduced,unreproduced,reproduced,N-ANALYST-DECK-REPRODUCTION-0003-SUPPLIED_VALUE,N-ANALYST-DECK-REPRODUCTION-0003-REPRODUCED_VALUE
+clinician_satisfaction_pct,94.0,,unknown,unreproduced,unreproduced,unreproduced,not_estimated,N-ANALYST-DECK-REPRODUCTION-0004-SUPPLIED_VALUE,

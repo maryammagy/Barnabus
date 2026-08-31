@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="250" viewBox="0 0 1000 250">
+<metadata>isolated non-endorsed analyst deck-number reproduction</metadata>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="30" y="32" font-family="Arial" font-size="20" font-weight="bold" fill="#172033">Analyst deck numbers: supplied versus reproducible</text>
+<text x="30" y="55" font-family="Arial" font-size="12" fill="#8b1e3f">Unreproduced means no matching derivation was found; no value was invented.</text>
+<text x="360" y="82" font-family="Arial" font-size="12" font-weight="bold">Supplied</text>
+<text x="520" y="82" font-family="Arial" font-size="12" font-weight="bold">Reproduced</text>
+<text x="720" y="82" font-family="Arial" font-size="12" font-weight="bold">Status</text>
+<text x="30" y="110" font-family="Arial" font-size="12">cancellation_reduction_pct</text>
+<text x="360" y="110" font-family="Arial" font-size="12">41.000</text>
+<text x="520" y="110" font-family="Arial" font-size="12">12.263</text>
+<text x="720" y="110" font-family="Arial" font-size="12" fill="#a33a2b">unreproduced</text>
+<text x="30" y="142" font-family="Arial" font-size="12">readiness_time_reduction_days</text>
+<text x="360" y="142" font-family="Arial" font-size="12">3.900</text>
+<text x="520" y="142" font-family="Arial" font-size="12">0.657</text>
+<text x="720" y="142" font-family="Arial" font-size="12" fill="#a33a2b">unreproduced</text>
+<text x="30" y="174" font-family="Arial" font-size="12">clinician_agreement_pct</text>
+<text x="360" y="174" font-family="Arial" font-size="12">87.000</text>
+<text x="520" y="174" font-family="Arial" font-size="12">90.200</text>
+<text x="720" y="174" font-family="Arial" font-size="12" fill="#a33a2b">unreproduced</text>
+<text x="30" y="206" font-family="Arial" font-size="12">clinician_satisfaction_pct</text>
+<text x="360" y="206" font-family="Arial" font-size="12">94.000</text>
+<text x="520" y="206" font-family="Arial" font-size="12">NA</text>
+<text x="720" y="206" font-family="Arial" font-size="12" fill="#a33a2b">unreproduced</text>
+</svg>

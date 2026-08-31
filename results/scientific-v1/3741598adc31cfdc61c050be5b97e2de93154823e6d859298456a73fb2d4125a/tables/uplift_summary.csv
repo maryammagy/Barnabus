@@ -1,0 +1,7 @@
+metric,estimate,lower,upper,rows,service_clusters,causal_validity,quantity_status,estimate_number_id,rows_number_id,service_clusters_number_id
+targeted_fraction,0.408496112270055,,,10546,12,descriptive_only,observed,N-UPLIFT-SUMMARY-0001-ESTIMATE,N-UPLIFT-SUMMARY-0001-ROWS,N-UPLIFT-SUMMARY-0001-SERVICE_CLUSTERS
+diagnostic_ranked_association_area_supported_range,0.0037511976299579616,,,10546,12,invalidated_not_causally_identified,diagnostic_observed_association,N-UPLIFT-SUMMARY-0002-ESTIMATE,N-UPLIFT-SUMMARY-0002-ROWS,N-UPLIFT-SUMMARY-0002-SERVICE_CLUSTERS
+diagnostic_qini_shaped_association_coefficient,0.0005752948827557573,,,10546,12,invalidated_not_causally_identified,diagnostic_observed_association,N-UPLIFT-SUMMARY-0003-ESTIMATE,N-UPLIFT-SUMMARY-0003-ROWS,N-UPLIFT-SUMMARY-0003-SERVICE_CLUSTERS
+top_30_percent_observed_targeting_association,,,,3164,12,invalidated_not_causally_identified,not_estimable_no_targeted_not_targeted_overlap,,N-UPLIFT-SUMMARY-0004-ROWS,N-UPLIFT-SUMMARY-0004-SERVICE_CLUSTERS
+causal_auuc_qini_or_policy_value,,,,10546,12,not_estimable,not_estimable,,N-UPLIFT-SUMMARY-0005-ROWS,N-UPLIFT-SUMMARY-0005-SERVICE_CLUSTERS
+supplied_classification_auc_not_uplift_validation,0.71,,,10546,12,invalid_metric_unreproduced,unreproduced_supplied_number,N-UPLIFT-SUMMARY-0006-ESTIMATE,N-UPLIFT-SUMMARY-0006-ROWS,N-UPLIFT-SUMMARY-0006-SERVICE_CLUSTERS

@@ -1,0 +1,4 @@
+reason,count,quantity_status,count_number_id
+missing_or_out_of_study_referral,53,observed,N-EXCLUSIONS-0001-COUNT
+outcome_assessment_readiness_or_review_status,0,observed,N-EXCLUSIONS-0002-COUNT
+contained_impossible_local_timestamps_excluded_upstream,165,observed,N-EXCLUSIONS-0003-COUNT

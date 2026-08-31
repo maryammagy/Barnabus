@@ -1,0 +1,4 @@
+metric,value,quantity_status,limitation,value_number_id
+supplied_weekly_rows,1272,observed,supplied_summary_not_recomputed_from_event_log_in_claim_path,N-MONITORING-0001-VALUE
+supplied_alerts_fired,29,observed,alert_rule_and_seasonality_model_not_supplied_so_alert_validity_is_unreproduced,N-MONITORING-0002-VALUE
+services_monitored,24,observed,descriptive_only,N-MONITORING-0003-VALUE
